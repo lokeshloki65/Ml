@@ -1,28 +1,38 @@
-from sklearn.linear_model import LinearRegression
-
-X = [[1, 1], [2, 2], [3, 3]]
-y = [2, 4, 6]
-
-model = LinearRegression()
-model.fit(X, y)
-
-print("Coefficients:", model.coef_)
-print("Intercept:", model.intercept_)
-print("Prediction:", model.predict([[4, 4]]))
-
-
-
-
+#include <stdio.h>
+int main() {
+    int pages[50], queue[10], n, f, i, j, k = 0, found, faults = 0;
+    scanf("%d%d", &n, &f); // n = number of pages, f = frames
+    for(i = 0; i < n; i++) scanf("%d", &pages[i]);
+    for(i = 0; i < n; i++) {
+        found = 0;
+        for(j = 0; j < f; j++)
+            if(queue[j] == pages[i]) found = 1;
+        if(!found) {
+            queue[k % f] = pages[i];
+            k++;
+            faults++;
+        }
+    }
+    printf("Page Faults = %d\n", faults);
+    return 0;
+}
 
 
 
 ....
 
-
-text = input("Enter a sentence: ")
-words = text.split()
-words.sort()
-
-print("Sorted words:")
-for w in words:
-    print(w)
+echo "Enter a number:"
+read num
+sum=0
+n=$num
+while [ $n -gt 0 ]
+do
+  digit=$((n % 10))
+  sum=$((sum + digit * digit * digit))
+  n=$((n / 10))
+done
+if [ $sum -eq $num ]; then
+  echo "$num is an Armstrong number."
+else
+  echo "$num is not an Armstrong number."
+fi
