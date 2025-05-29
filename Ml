@@ -14,7 +14,6 @@ def shortest_path(graph, start, end):
             if neighbor not in visited:
                 heapq.heappush(queue, (cost + weight, neighbor, path))
     return float("inf"), []
-# Example usage
 graph = {
     'A': {'B': 1, 'C': 4},
     'B': {'C': 2, 'D': 5},
