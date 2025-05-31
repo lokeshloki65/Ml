@@ -1,33 +1,27 @@
-import heapq
-def shortest_path(graph, start, end):
-    queue = [(0, start, [])]
-    visited = set()
-    while queue:
-        cost, node, path = heapq.heappop(queue)
-        if node in visited:
-            continue
-        path = path + [node]
-        if node == end:
-            return cost, path
-        visited.add(node)
-        for neighbor, weight in graph.get(node, {}).items():
-            if neighbor not in visited:
-                heapq.heappush(queue, (cost + weight, neighbor, path))
-    return float("inf"), []
-graph = {
-    'A': {'B': 1, 'C': 4},
-    'B': {'C': 2, 'D': 5},
-    'C': {'D': 1},
-    'D': {}
-}
-cost, path = shortest_path(graph, 'A', 'D')
-print("Cost:", cost)
-print("Path:", path)
+-- Create table
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT
+);
+-- Insert records
+INSERT INTO students VALUES 
+  (1, 'Alice', 20), 
+  (2, 'Bob', 22);
+-- View all records
+SELECT * FROM students;
+-- Delete one record
+DELETE FROM students WHERE name = 'Bob';
+-- View remaining records
+SELECT * FROM students;
 
 
 
 
-
-....
-Cost: 4
-Path: ['A', 'B', 'C', 'D']
+..,.
++----+-------+-----+
+| id | name  | age |
++----+-------+-----+
+| 1  | Alice |  20 |
+| 2  | Bob   |  22 |
++----+-------+-----+
